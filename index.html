@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="設備投資を、補助金であきらめない。申請書作成から採択後の実績報告まで一括で伴走する、中小企業向け補助金採択伴走サービス。">
+<title>設備投資を、補助金であきらめない。｜補助金採択伴走サービス</title>
+<style>
+  :root{
+    --base:#FFFFFF;
+    --base-pale:#FAF7F2;
+    --main:#2F4F3E;
+    --main-deep:#243C30;
+    --main-soft:#EDE3D0;
+    --main-soft2:#F4EEE1;
+    --accent:#A8431C;
+    --accent-hover:#8F3817;
+    --text-primary:#1A1A1A;
+    --text-secondary:#595959;
+    --on-main:#FFFFFF;
+    --cta-text:#FFFFFF;
+    --border-soft:var(--main-soft);
+    --radius-card:12px;
+    --radius-btn:8px;
+    --max-width:720px;
+    --font-jp:"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic Medium","Yu Gothic","Meiryo",system-ui,sans-serif;
+  }
+
+  @media (prefers-color-scheme: dark){
+    :root{
+      --base:#16140F;
+      --base-pale:#1D1B15;
+      --main:#8FC4A8;
+      --main-deep:#A9D6BB;
+      --main-soft:#3A3226;
+      --main-soft2:#241F17;
+      --accent:#E4885A;
+      --accent-hover:#EDA179;
+      --text-primary:#F2EEE6;
+      --text-secondary:#B9B2A4;
+      --on-main:#16140F;
+      --cta-text:#16140F;
+      --border-soft:#3A3226;
+    }
+  }
+  :root[data-theme="dark"]{
+    --base:#16140F;
+    --base-pale:#1D1B15;
+    --main:#8FC4A8;
+    --main-deep:#A9D6BB;
+    --main-soft:#3A3226;
+    --main-soft2:#241F17;
+    --accent:#E4885A;
+    --accent-hover:#EDA179;
+    --text-primary:#F2EEE6;
+    --text-secondary:#B9B2A4;
+    --on-main:#16140F;
+    --cta-text:#16140F;
+    --border-soft:#3A3226;
+  }
+  :root[data-theme="light"]{
+    --base:#FFFFFF;
+    --base-pale:#FAF7F2;
+    --main:#2F4F3E;
+    --main-deep:#243C30;
+    --main-soft:#EDE3D0;
+    --main-soft2:#F4EEE1;
+    --accent:#A8431C;
+    --accent-hover:#8F3817;
+    --text-primary:#1A1A1A;
+    --text-secondary:#595959;
+    --on-main:#FFFFFF;
+    --cta-text:#FFFFFF;
+    --border-soft:var(--main-soft);
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+
+  html{ -webkit-text-size-adjust:100%; }
+
+  body{
+    font-family:var(--font-jp);
+    color:var(--text-primary);
+    background:var(--base);
+    line-height:1.6;
+    font-size:16px;
+    -webkit-font-smoothing:antialiased;
+    transition:background 0.2s ease, color 0.2s ease;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ transition:none !important; animation:none !important; }
+  }
+
+  img, svg{ max-width:100%; display:block; }
+
+  .container{
+    max-width:var(--max-width);
+    margin:0 auto;
+    padding:0 24px;
+  }
+
+  section{ padding:48px 0; }
+
+  h1, h2, h3{
+    line-height:1.25;
+    font-weight:700;
+    color:var(--text-primary);
+    text-wrap:balance;
+  }
+
+  .section-title{
+    font-size:26px;
+    font-weight:700;
+    margin-bottom:24px;
+  }
+  @media (min-width:600px){
+    .section-title{ font-size:28px; }
+  }
+
+  p{
+    font-size:16px;
+    line-height:1.6;
+    color:var(--text-primary);
+  }
+  @media (min-width:600px){
+    p{ font-size:17px; }
+  }
+
+  ul.point-list{
+    list-style:none;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+  }
+  ul.point-list li{
+    position:relative;
+    padding-left:24px;
+    font-size:16px;
+    line-height:1.6;
+  }
+  ul.point-list li::before{
+    content:"";
+    position:absolute;
+    left:0;
+    top:10px;
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:var(--main);
+  }
+
+  .placeholder-visual{
+    width:100%;
+    aspect-ratio:16/9;
+    border-radius:var(--radius-card);
+    background:linear-gradient(135deg, var(--main-soft2) 0%, var(--main-soft) 60%, var(--main) 140%);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-bottom:16px;
+  }
+  .placeholder-visual svg{ width:56px; height:56px; opacity:0.55; }
+  .placeholder-note{
+    font-size:14px;
+    color:var(--text-secondary);
+    text-align:center;
+    margin-bottom:24px;
+  }
+
+  .cta-btn{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:100%;
+    min-height:56px;
+    background:var(--accent);
+    color:var(--cta-text);
+    font-size:17px;
+    font-weight:700;
+    border:none;
+    border-radius:var(--radius-btn);
+    text-decoration:none;
+    cursor:pointer;
+    transition:background 0.15s ease;
+    padding:16px 24px;
+    line-height:1.25;
+  }
+  .cta-btn:hover, .cta-btn:focus-visible{
+    background:var(--accent-hover);
+  }
+  .cta-btn:focus-visible{
+    outline:3px solid var(--main);
+    outline-offset:2px;
+  }
+  .cta-caption{
+    text-align:center;
+    font-size:14px;
+    color:var(--text-secondary);
+    margin-top:8px;
+  }
+
+  .hero{
+    background:linear-gradient(180deg, var(--base-pale) 0%, var(--base) 100%);
+    padding:56px 0 40px;
+  }
+  .hero-eyebrow{
+    font-size:14px;
+    font-weight:700;
+    color:var(--main);
+    letter-spacing:0.04em;
+    margin-bottom:16px;
+  }
+  .hero h1{
+    font-size:34px;
+    font-weight:900;
+    margin-bottom:16px;
+    letter-spacing:-0.01em;
+  }
+  @media (min-width:600px){
+    .hero h1{ font-size:38px; }
+  }
+  .hero-sub{
+    font-size:17px;
+    color:var(--text-secondary);
+    margin-bottom:32px;
+    line-height:1.6;
+  }
+
+  .empathy-bg{ background:var(--base-pale); }
+  .empathy-scene{
+    background:var(--base);
+    border-radius:var(--radius-card);
+    padding:24px;
+    margin-bottom:24px;
+    border:1px solid var(--border-soft);
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+  }
+  .empathy-lead{ font-size:16px; color:var(--text-secondary); }
+  .empathy-close{
+    font-size:18px;
+    font-weight:700;
+    color:var(--main);
+    margin-top:24px;
+    line-height:1.5;
+  }
+
+  .benefit-card{
+    background:var(--base);
+    border:1px solid var(--border-soft);
+    border-radius:var(--radius-card);
+    padding:24px;
+    margin-bottom:24px;
+  }
+  .benefit-card:last-child{ margin-bottom:0; }
+  .benefit-num{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:32px;
+    height:32px;
+    border-radius:50%;
+    background:var(--main);
+    color:var(--on-main);
+    font-size:14px;
+    font-weight:700;
+    margin-bottom:16px;
+  }
+  .benefit-card h3{ font-size:20px; margin-bottom:8px; }
+  .benefit-card p{ color:var(--text-secondary); }
+
+  .mechanism-bg{ background:var(--base-pale); }
+  .mechanism-intro{ margin-bottom:32px; color:var(--text-secondary); }
+  .mechanism-card{
+    background:var(--base);
+    border-radius:var(--radius-card);
+    padding:24px;
+    margin-bottom:24px;
+    border-left:4px solid var(--main);
+  }
+  .mechanism-card:last-child{ margin-bottom:0; }
+  .mechanism-card h3{ font-size:20px; margin-bottom:8px; color:var(--main); }
+  .mechanism-card p{ margin-bottom:16px; }
+  .diff-box{
+    background:var(--main-soft2);
+    border-radius:8px;
+    padding:16px;
+  }
+  .diff-label{ font-size:14px; font-weight:700; color:var(--main); margin-bottom:8px; }
+  .diff-box p{ font-size:14px; color:var(--text-secondary); margin:0; }
+  .report-list{ background:var(--main-soft2); border-radius:8px; padding:24px; margin-bottom:16px; }
+
+  .profile-bg{ background:var(--main); }
+  .profile-bg .section-title,
+  .profile-bg p{ color:var(--on-main); }
+  .profile-bg .placeholder-visual{
+    background:linear-gradient(135deg, rgba(0,0,0,0.08), rgba(0,0,0,0.02));
+  }
+  .profile-bg .placeholder-note{ color:var(--on-main); opacity:0.75; }
+  .profile-bg p + p{ margin-top:16px; }
+  .profile-emphasis{ font-weight:700; margin-top:24px; }
+
+  .price-card{
+    background:var(--base);
+    border:2px solid var(--border-soft);
+    border-radius:var(--radius-card);
+    padding:24px;
+    margin-bottom:24px;
+  }
+  .price-card:last-child{ margin-bottom:0; }
+  .price-card.featured{ border-color:var(--main); }
+  .price-tag{
+    display:inline-block;
+    font-size:14px;
+    font-weight:700;
+    color:var(--main);
+    background:var(--main-soft2);
+    padding:4px 12px;
+    border-radius:99px;
+    margin-bottom:16px;
+  }
+  .price-card h3{ font-size:22px; margin-bottom:8px; }
+  .price-card .desc{ color:var(--text-secondary); margin-bottom:16px; }
+  .price-detail-label{
+    font-size:14px;
+    font-weight:700;
+    color:var(--text-secondary);
+    margin-bottom:8px;
+    margin-top:16px;
+  }
+  .price-amount{ font-size:26px; font-weight:900; color:var(--main); line-height:1.25; }
+  .price-amount .unit{ font-size:16px; font-weight:500; color:var(--text-secondary); }
+  .price-plus{ margin:8px 0; color:var(--text-secondary); font-size:16px; }
+  hr.divider{ border:none; border-top:1px solid var(--border-soft); margin:16px 0; }
+
+  .limited-bg{ background:var(--main-soft2); text-align:center; }
+  .limited-badge{
+    display:inline-block;
+    font-size:14px;
+    font-weight:700;
+    color:var(--on-main);
+    background:var(--main);
+    padding:8px 24px;
+    border-radius:99px;
+    margin-bottom:24px;
+  }
+  .limited-bg h2{ font-size:26px; margin-bottom:16px; }
+  .limited-note{ color:var(--text-secondary); max-width:520px; margin:0 auto; }
+
+  .final-cta{ text-align:center; }
+  .final-cta h2{ font-size:26px; margin-bottom:24px; }
+  .final-cta .lead{ margin-bottom:8px; }
+  .final-cta .highlight{
+    font-size:20px;
+    font-weight:700;
+    color:var(--main);
+    margin:24px 0;
+    line-height:1.5;
+  }
+  .final-cta .before-btn{ margin-bottom:24px; color:var(--text-secondary); }
+
+  footer{ padding:32px 24px 48px; text-align:center; }
+  footer p{ font-size:14px; color:var(--text-secondary); }
+
+  .btn-wrap{ max-width:520px; margin:0 auto; }
+
+  @media (min-width:600px){
+    section{ padding:56px 0; }
+    .container{ padding:0 32px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="container">
+    <p class="hero-eyebrow">設備投資×補助金 伴走支援</p>
+    <h1>設備投資を、<br>補助金であきらめない。</h1>
+    <p class="hero-sub">
+      申請書作成から採択後の実績報告まで一括で伴走。<br>
+      AIと専門家が、補助金の受給を通じて<br>
+      設備投資の実現を支えます。
+    </p>
+    <div class="btn-wrap">
+      <a href="#diagnosis" class="cta-btn">採択可能性を診断する</a>
+      <p class="cta-caption">60分のヒアリングで判断できます</p>
+    </div>
+  </div>
+</header>
+
+<section class="empathy-bg">
+  <div class="container">
+    <h2 class="section-title">こんなお悩みは<br>ありませんか？</h2>
+
+    <div class="empathy-scene">
+      <p class="empathy-lead">
+        15:00、事務所で設備投資のために公募要領を開く。<br>
+        50〜100ページの資料を前に、<br>
+        「これ、本当に間に合うのか……」と手が止まる。
+      </p>
+      <p class="empathy-lead">
+        昼に打ち合わせをした日本政策金融公庫の担当者とは、<br>
+        補助金を活用する前提で資金計画を進めている。<br>
+        けれど、採択されなければ設備更新は延期になる。
+      </p>
+      <p class="empathy-lead">
+        すると経理担当が、<br>
+        「実績報告では請求書や納品書も<br>
+        全部必要になります」と証憑の資料を机へ置く。
+      </p>
+      <p class="empathy-lead">
+        行政書士へ相談しても、<br>
+        自社資料の準備や説明は結局自分の仕事。
+      </p>
+    </div>
+
+    <p>
+      設備投資を進めたいのに、申請書や実績報告に<br>
+      時間を取られ、計画そのものが止まってしまう。<br>
+      そんな状況を経験している経営者は少なくありません。
+    </p>
+    <p class="empathy-close">
+      私たちは、補助金申請ではなく、<br>
+      「設備投資を予定どおり実現すること」を<br>
+      目的に支援しています。
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2 class="section-title">このサービスで<br>得られること</h2>
+
+    <div class="benefit-card">
+      <span class="benefit-num">1</span>
+      <h3>設備投資のタイミングを<br>逃さず、計画どおりに<br>前へ進められます。</h3>
+      <p>
+        補助金申請から受給まで伴走するため、<br>
+        「採択されるだろうか」と不安を抱え続けることなく、<br>
+        設備更新計画を進められます。
+      </p>
+    </div>
+
+    <div class="benefit-card">
+      <span class="benefit-num">2</span>
+      <h3>補助金業務に追われず、<br>本業の経営判断へ<br>集中できます。</h3>
+      <p>
+        申請書作成や実績報告、証憑整理まで支援するため、<br>
+        設備導入や営業、社員育成など、<br>
+        本来優先すべき仕事へ時間を使えるようになります。
+      </p>
+    </div>
+
+    <div class="benefit-card">
+      <span class="benefit-num">3</span>
+      <h3>申請すべきかどうかを、<br>60分で判断できます。</h3>
+      <p>
+        活用できる補助金、想定補助額、採択可能性、<br>
+        不足資料を整理した診断レポートにより、<br>
+        設備投資を進めるべきかを判断できます。
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="mechanism-bg">
+  <div class="container">
+    <h2 class="section-title">補助金受給まで、<br>一括で伴走します。</h2>
+    <p class="mechanism-intro">
+      補助金の選定から申請書作成、採択後の実績報告までを<br>
+      一貫して支援します。AIが申請書や証憑整理を効率化し、<br>
+      人が最終確認を行いながら、補助金受給まで<br>
+      責任を持って伴走します。
+    </p>
+
+    <div class="mechanism-card">
+      <h3>採択で終わらせません</h3>
+      <p>
+        多くの申請支援サービスは採択で終了します。<br>
+        私たちは、補助金が実際に受給され、<br>
+        設備投資が実現するところまで支援します。
+      </p>
+      <div class="diff-box">
+        <p class="diff-label">他社との違い</p>
+        <p>採択後の実績報告・証憑整理まで一括で対応します。</p>
+      </div>
+    </div>
+
+    <div class="mechanism-card">
+      <h3>一度のヒアリングで<br>説明の手間を減らす</h3>
+      <p>
+        初回60〜90分のヒアリングで会社情報や<br>
+        設備投資計画を整理し、その内容を申請書・<br>
+        実績報告・追加資料へ継続活用します。
+      </p>
+      <div class="diff-box">
+        <p class="diff-label">他社との違い</p>
+        <p>案件ごとに同じ説明を繰り返すのではなく、<br>一度整理した情報を最後まで活用します。</p>
+      </div>
+    </div>
+
+    <div class="mechanism-card">
+      <h3>申請前に、採択可能性を<br>見える化します</h3>
+      <p>60分のヒアリング後、診断レポートとしてお渡しします。</p>
+      <div class="report-list">
+        <ul class="point-list">
+          <li>活用できる補助金</li>
+          <li>想定補助額</li>
+          <li>採択可能性</li>
+          <li>不足資料</li>
+          <li>改善ポイント</li>
+        </ul>
+      </div>
+      <p style="margin:0;">
+        「申請する価値がある案件か」を確認した上で、<br>
+        支援を開始します。
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="profile-bg">
+  <div class="container">
+    <h2 class="section-title">私について</h2>
+    <div class="placeholder-visual">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--on-main)">
+        <circle cx="12" cy="8" r="4"></circle>
+        <path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"></path>
+      </svg>
+    </div>
+    <p class="placeholder-note">[代表者の顔写真が入る]</p>
+
+    <p>
+      私は製造業の中小企業で技術系管理職として、<br>
+      設備投資や現場改善に携わってきました。
+    </p>
+    <p>
+      現場では、多くの経営者が設備投資よりも、<br>
+      申請書類や実績報告に時間を取られている<br>
+      現実を見てきました。
+    </p>
+    <p>
+      生成AIを学ぶ中で、「この負担は仕組みで減らせる」と<br>
+      確信し、このサービスを立ち上げました。
+    </p>
+    <p class="profile-emphasis">
+      私が支援したいのは、申請書を作ることではありません。<br>
+      設備投資を実現し、中小企業が成長するための<br>
+      時間を経営者へ返すことです。
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2 class="section-title">サービス内容</h2>
+
+    <div class="price-card">
+      <span class="price-tag">STEP 1</span>
+      <h3>補助金採択可能性診断レポート</h3>
+      <p class="desc">60分のヒアリング後、約7日で診断レポートを納品します。</p>
+
+      <p class="price-detail-label">内容</p>
+      <ul class="point-list">
+        <li>活用できる補助金</li>
+        <li>想定補助額</li>
+        <li>採択可能性</li>
+        <li>不足資料</li>
+        <li>改善ポイント</li>
+      </ul>
+
+      <hr class="divider">
+      <p class="price-detail-label">価格</p>
+      <p class="price-amount">19,800〜29,800円 <span class="unit">（税込）</span></p>
+    </div>
+
+    <div class="price-card featured">
+      <span class="price-tag">STEP 2</span>
+      <h3>採択コミット伴走パッケージ</h3>
+      <p class="desc">
+        補助金の選定から申請書作成、採択後の実績報告、<br>
+        証憑整理までを一括で支援します。設備投資が実現し、<br>
+        補助金が受給されるまで伴走します。
+      </p>
+
+      <hr class="divider">
+      <p class="price-detail-label">価格</p>
+      <p class="price-amount">着手金 25〜35万円</p>
+      <p class="price-plus">＋</p>
+      <p class="price-amount">成功報酬 8〜12<span class="unit">％（補助金受給時）</span></p>
+
+      <hr class="divider">
+      <p class="price-detail-label">期間</p>
+      <p class="price-amount" style="font-size:20px;">約4〜8か月</p>
+    </div>
+  </div>
+</section>
+
+<section class="limited-bg">
+  <div class="container">
+    <span class="limited-badge">毎月3社限定</span>
+    <h2>創業初年度につき、<br>品質を維持するため<br>限定受付しています。</h2>
+    <p class="limited-note">
+      初回モニター企業には、サービス改善へのご協力を<br>
+      条件として特別価格をご案内予定です。
+    </p>
+  </div>
+</section>
+
+<section class="final-cta" id="diagnosis">
+  <div class="container">
+    <h2>最後のご案内</h2>
+    <p class="lead">設備投資は、会社の未来を変える大きな決断です。</p>
+    <p class="lead">だからこそ、「申請書を書けるか」ではなく、</p>
+    <p class="highlight">「設備投資を実現できるか」<br>を基準に考えてみませんか。</p>
+    <p class="before-btn">
+      まずは60分の診断で、<br>
+      活用できる補助金と採択可能性を確認してください。
+    </p>
+    <div class="btn-wrap">
+      <a href="#" class="cta-btn">採択可能性を診断する</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>※本レポートは補助金の採択・受給を保証するものではありません。</p>
+</footer>
+
+</body>
+</html>
