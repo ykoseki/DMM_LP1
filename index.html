@@ -295,27 +295,32 @@
     line-height:1.5;
   }
 
+  .benefit-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:24px;
+  }
+  @media (min-width:768px){
+    .benefit-grid{ grid-template-columns:repeat(3, 1fr); }
+  }
   .benefit-card{
     background:var(--base);
     border:1px solid var(--border-soft);
     border-radius:var(--radius-card);
     padding:24px;
-    margin-bottom:24px;
   }
-  .benefit-card:last-child{ margin-bottom:0; }
-  .benefit-num{
+  .benefit-icon{
     display:inline-flex;
     align-items:center;
     justify-content:center;
-    width:32px;
-    height:32px;
+    width:40px;
+    height:40px;
     border-radius:50%;
     background:var(--main);
     color:var(--on-main);
-    font-size:14px;
-    font-weight:700;
     margin-bottom:16px;
   }
+  .benefit-icon svg{ width:20px; height:20px; }
   .benefit-card h3{ font-size:20px; margin-bottom:8px; }
   .benefit-card p{ color:var(--text-secondary); }
 
@@ -506,9 +511,15 @@
   <div class="container">
     <h2 class="section-title">このサービスで<br>得られること</h2>
 
+    <div class="benefit-grid">
     <div class="benefit-card">
-      <span class="benefit-num">1</span>
-      <h3>設備投資のタイミングを<br>逃さず、計画どおりに<br>前へ進められます。</h3>
+      <span class="benefit-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="9"></circle>
+          <path d="M12 7v5l3 3"></path>
+        </svg>
+      </span>
+      <h3>設備投資のタイミングを逃さない</h3>
       <p>
         補助金申請から受給まで伴走するため、<br>
         「採択されるだろうか」と不安を抱え続けることなく、<br>
@@ -517,8 +528,14 @@
     </div>
 
     <div class="benefit-card">
-      <span class="benefit-num">2</span>
-      <h3>補助金業務に追われず、<br>本業の経営判断へ<br>集中できます。</h3>
+      <span class="benefit-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M7 3h7l4 4v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"></path>
+          <path d="M14 3v4h4"></path>
+          <path d="M9 12h6M9 16h6"></path>
+        </svg>
+      </span>
+      <h3>補助金業務は、私たちが代行します</h3>
       <p>
         申請書作成や実績報告、証憑整理まで支援するため、<br>
         設備導入や営業、社員育成など、<br>
@@ -527,13 +544,20 @@
     </div>
 
     <div class="benefit-card">
-      <span class="benefit-num">3</span>
-      <h3>申請すべきかどうかを、<br>60分で判断できます。</h3>
+      <span class="benefit-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="6" y="4" width="12" height="16" rx="1.5"></rect>
+          <path d="M9 4V3a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1"></path>
+          <path d="M9 12l2 2 4-4"></path>
+        </svg>
+      </span>
+      <h3>60分で、申請の価値を判断できる</h3>
       <p>
         活用できる補助金、想定補助額、採択可能性、<br>
         不足資料を整理した診断レポートにより、<br>
         設備投資を進めるべきかを判断できます。
       </p>
+    </div>
     </div>
   </div>
 </section>
