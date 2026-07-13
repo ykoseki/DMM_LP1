@@ -200,6 +200,44 @@
     margin-top:8px;
   }
 
+  .cta-btn--sm{
+    width:auto;
+    min-height:40px;
+    font-size:14px;
+    padding:8px 20px;
+    flex-shrink:0;
+  }
+
+  .sticky-bar{
+    position:sticky;
+    top:0;
+    z-index:40;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    padding:12px 24px;
+    background:var(--base);
+    border-bottom:1px solid var(--border-soft);
+    opacity:0;
+    transform:translateY(-8px);
+    transition:opacity 0.25s ease, transform 0.25s ease;
+    pointer-events:none;
+  }
+  .sticky-bar.is-visible{
+    opacity:1;
+    transform:translateY(0);
+    pointer-events:auto;
+  }
+  .sticky-bar-brand{
+    font-size:14px;
+    font-weight:700;
+    color:var(--text-primary);
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+
   .hero{
     background:linear-gradient(180deg, var(--base-pale) 0%, var(--base) 100%);
     padding:56px 0 40px;
@@ -228,15 +266,25 @@
   }
 
   .empathy-bg{ background:var(--base-pale); }
-  .empathy-scene{
-    background:var(--base);
-    border-radius:var(--radius-card);
-    padding:24px;
-    margin-bottom:24px;
-    border:1px solid var(--border-soft);
+  .empathy-cards{
     display:flex;
     flex-direction:column;
     gap:16px;
+    margin-bottom:24px;
+  }
+  .empathy-card{
+    background:var(--base);
+    border-radius:var(--radius-card);
+    padding:24px;
+    border:1px solid var(--border-soft);
+  }
+  .empathy-label{
+    display:inline-block;
+    font-size:14px;
+    font-weight:700;
+    color:var(--main);
+    letter-spacing:0.04em;
+    margin-bottom:8px;
   }
   .empathy-lead{ font-size:16px; color:var(--text-secondary); }
   .empathy-close{
@@ -292,16 +340,15 @@
   .diff-box p{ font-size:14px; color:var(--text-secondary); margin:0; }
   .report-list{ background:var(--main-soft2); border-radius:8px; padding:24px; margin-bottom:16px; }
 
-  .profile-bg{ background:var(--main); }
-  .profile-bg .section-title,
-  .profile-bg p{ color:var(--on-main); }
-  .profile-bg .placeholder-visual{
-    background:linear-gradient(135deg, rgba(0,0,0,0.08), rgba(0,0,0,0.02));
-  }
-  .profile-bg .placeholder-note{ color:var(--on-main); opacity:0.75; }
+  .profile-bg{ background:var(--base-pale); }
   .profile-bg p + p{ margin-top:16px; }
-  .profile-emphasis{ font-weight:700; margin-top:24px; }
+  .profile-emphasis{ font-weight:700; margin-top:24px; color:var(--main); }
 
+  .price-grid{
+    display:flex;
+    flex-direction:column;
+    gap:24px;
+  }
   .price-card{
     background:var(--base);
     border:2px solid var(--border-soft);
@@ -370,6 +417,16 @@
     section{ padding:56px 0; }
     .container{ padding:0 32px; }
   }
+
+  @media (min-width:680px){
+    .price-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      align-items:start;
+      gap:24px;
+    }
+    .price-grid .price-card{ margin-bottom:0; }
+  }
 </style>
 </head>
 <body>
@@ -390,30 +447,46 @@
   </div>
 </header>
 
+<div class="sticky-bar" id="stickyBar">
+  <p class="sticky-bar-brand">設備投資×補助金 伴走支援</p>
+  <a href="#diagnosis" class="cta-btn cta-btn--sm">採択可能性を診断する</a>
+</div>
+
 <section class="empathy-bg">
   <div class="container">
     <h2 class="section-title">こんなお悩みは<br>ありませんか？</h2>
 
-    <div class="empathy-scene">
-      <p class="empathy-lead">
-        15:00、事務所で設備投資のために公募要領を開く。<br>
-        50〜100ページの資料を前に、<br>
-        「これ、本当に間に合うのか……」と手が止まる。
-      </p>
-      <p class="empathy-lead">
-        昼に打ち合わせをした日本政策金融公庫の担当者とは、<br>
-        補助金を活用する前提で資金計画を進めている。<br>
-        けれど、採択されなければ設備更新は延期になる。
-      </p>
-      <p class="empathy-lead">
-        すると経理担当が、<br>
-        「実績報告では請求書や納品書も<br>
-        全部必要になります」と証憑の資料を机へ置く。
-      </p>
-      <p class="empathy-lead">
-        行政書士へ相談しても、<br>
-        自社資料の準備や説明は結局自分の仕事。
-      </p>
+    <div class="empathy-cards">
+      <div class="empathy-card">
+        <p class="empathy-label">15:00</p>
+        <p class="empathy-lead">
+          事務所で設備投資のために公募要領を開く。<br>
+          50〜100ページの資料を前に、<br>
+          「これ、本当に間に合うのか……」と手が止まる。
+        </p>
+      </div>
+      <div class="empathy-card">
+        <p class="empathy-label">日中</p>
+        <p class="empathy-lead">
+          打ち合わせをした日本政策金融公庫の担当者とは、<br>
+          補助金を活用する前提で資金計画を進めている。<br>
+          けれど、採択されなければ設備更新は延期になる。
+        </p>
+      </div>
+      <div class="empathy-card">
+        <p class="empathy-label">経理から</p>
+        <p class="empathy-lead">
+          「実績報告では請求書や納品書も<br>
+          全部必要になります」と証憑の資料を机へ置かれる。
+        </p>
+      </div>
+      <div class="empathy-card">
+        <p class="empathy-label">依頼しても</p>
+        <p class="empathy-lead">
+          行政書士へ相談しても、<br>
+          自社資料の準備や説明は結局自分の仕事。
+        </p>
+      </div>
     </div>
 
     <p>
@@ -525,7 +598,7 @@
   <div class="container">
     <h2 class="section-title">私について</h2>
     <div class="placeholder-visual">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--on-main)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--main)">
         <circle cx="12" cy="8" r="4"></circle>
         <path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"></path>
       </svg>
@@ -557,6 +630,7 @@
   <div class="container">
     <h2 class="section-title">サービス内容</h2>
 
+    <div class="price-grid">
     <div class="price-card">
       <span class="price-tag">STEP 1</span>
       <h3>補助金採択可能性診断レポート</h3>
@@ -595,6 +669,7 @@
       <p class="price-detail-label">期間</p>
       <p class="price-amount" style="font-size:20px;">約4〜8か月</p>
     </div>
+    </div>
   </div>
 </section>
 
@@ -628,6 +703,20 @@
 <footer>
   <p>※本レポートは補助金の採択・受給を保証するものではありません。</p>
 </footer>
+
+<script>
+(function(){
+  var hero = document.querySelector('.hero');
+  var bar = document.getElementById('stickyBar');
+  if(!hero || !bar || !('IntersectionObserver' in window)) return;
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      bar.classList.toggle('is-visible', !entry.isIntersecting);
+    });
+  }, { threshold: 0 });
+  observer.observe(hero);
+})();
+</script>
 
 </body>
 </html>
