@@ -277,14 +277,17 @@
     border-radius:var(--radius-card);
     padding:24px;
     border:1px solid var(--border-soft);
+    display:grid;
+    grid-template-columns:88px 1fr;
+    gap:16px;
+    align-items:start;
   }
   .empathy-label{
-    display:inline-block;
     font-size:14px;
     font-weight:700;
     color:var(--main);
     letter-spacing:0.04em;
-    margin-bottom:8px;
+    padding-top:2px;
   }
   .empathy-lead{ font-size:16px; color:var(--text-secondary); }
   .empathy-close{
@@ -313,14 +316,14 @@
     display:inline-flex;
     align-items:center;
     justify-content:center;
-    width:40px;
-    height:40px;
-    border-radius:50%;
-    background:var(--main);
+    width:52px;
+    height:52px;
+    border-radius:12px;
+    background:linear-gradient(135deg, var(--main) 0%, var(--main-deep) 100%);
     color:var(--on-main);
     margin-bottom:16px;
   }
-  .benefit-icon svg{ width:20px; height:20px; }
+  .benefit-icon svg{ width:26px; height:26px; }
   .benefit-card h3{ font-size:20px; margin-bottom:8px; }
   .benefit-card p{ color:var(--text-secondary); }
 
